@@ -17,7 +17,7 @@ WORKDIR /app/packages/frontend
 RUN npx next build
 
 FROM node:22-alpine AS runner
-WORKDIR /app/packages/frontend
+WORKDIR /app
 ENV NODE_ENV=production
 
 COPY --from=builder /app/packages/frontend/.next/standalone /app

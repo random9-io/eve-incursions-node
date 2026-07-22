@@ -16,7 +16,7 @@ const wss = new WebSocketServer({
       return;
     }
 
-    if (ALLOWED_ORIGINS.length > 0 && !ALLOWED_ORIGINS.includes(info.origin)) {
+    if (!ALLOWED_ORIGINS.includes(info.origin)) {
       cb(false, 403, 'Origin not allowed');
       return;
     }
@@ -59,4 +59,7 @@ redis.subscribe('spawn.change').then(() => {
       }
     }
   });
+}).catch((err) => {
+  console.error('Failed to subscribe to Redis spawn.change channel:', err);
+  process.exit(1);
 });

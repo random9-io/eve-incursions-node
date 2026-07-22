@@ -42,17 +42,40 @@ async function main() {
   console.log(`Server has started at ${url}`)
 }
 
-function countDepth(document: any, max = 0): number {
+function countDepth(document: any): number {
+  const fragments = new Map<string, any>();
+  for (const def of document.definitions) {
+    if (def.kind === 'FragmentDefinition') {
+      fragments.set(def.name.value, def);
+    }
+  }
+
+  let max = 0;
+  const visiting = new Set<string>();
+
   function visit(node: any, depth: number): void {
     if (depth > max) max = depth;
-    if (node.selectionSet) {
-      for (const sel of node.selectionSet.selections) {
+    if (!node.selectionSet) return;
+
+    for (const sel of node.selectionSet.selections) {
+      if (sel.kind === 'FragmentSpread') {
+        const name = sel.name.value;
+        if (!visiting.has(name)) {
+          visiting.add(name);
+          const frag = fragments.get(name);
+          if (frag) visit(frag, depth);
+          visiting.delete(name);
+        }
+      } else {
         visit(sel, depth + 1);
       }
     }
   }
+
   for (const def of document.definitions) {
-    visit(def, 0);
+    if (def.kind === 'OperationDefinition') {
+      visit(def, 0);
+    }
   }
   return max;
 }
