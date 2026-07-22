@@ -23,8 +23,8 @@ async function main() {
           return {
             async didResolveOperation(requestContext) {
               const depth = countDepth(requestContext.document);
-              if (depth > 5) {
-                throw new Error(`Query depth ${depth} exceeds maximum allowed depth of 5`);
+              if (depth > 7) {
+                throw new Error(`Query depth ${depth} exceeds maximum allowed depth of 7`);
               }
             }
           };

@@ -14,7 +14,7 @@ services:
   frontend:
     restart: unless-stopped
     ports:
-      - "127.0.0.1:3010:3000"
+      - "3010:3000"
     environment:
       - NODE_ENV=production
       - REDIS_PASSWORD
@@ -28,7 +28,7 @@ services:
   ws:
     restart: unless-stopped
     ports:
-      - "127.0.0.1:4003:4003"
+      - "4003:4003"
     environment:
       - ALLOWED_ORIGINS
     healthcheck:

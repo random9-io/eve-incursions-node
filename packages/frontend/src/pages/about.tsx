@@ -1,23 +1,19 @@
-import {useEffect, useState} from 'react';
 import styles from '../styles/prose.module.css';
 
 export default function About() {
-  const [mail, setMail] = useState('');
-
-  useEffect(() => {
-    setMail('lars.naurath@gmail.com');
-  }, []);
-
   return (
     <div className={styles.prose}>
       <h1>About</h1>
-      <p>If you have any feedback, bugs, questions or feature requests, you can contact me through the following channels.</p>
+      <p>This EVE Online incursion tracker is hosted independently. Originally built by MikeRoni at{' '}
+        <a href="https://eve-incursions.de" target="_blank" rel="noopener noreferrer">eve-incursions.de</a>,
+        who generously open&#8209;sourced the project.</p>
+      <p>If you have any feedback, bugs, or questions, you can reach us through the following channels.</p>
       <dl className={styles.contact}>
-        <dt>Ingame</dt>
-        <dd>MikeRoni <span className={styles.note}>(currently not subbed — use another method to reach me)</span></dd>
+        <dt>In&#8209;game</dt>
+        <dd>Lost Ai</dd>
 
-        <dt>Email</dt>
-        <dd>{mail ? <a href={`mailto:${mail}`}>{mail}</a> : <span className={styles.note}>loading…</span>}</dd>
+        <dt>Source</dt>
+        <dd><a href="https://github.com/random9-io/eve-incursions-node" target="_blank" rel="noopener noreferrer">random9-io/eve-incursions-node</a></dd>
       </dl>
     </div>
   );
