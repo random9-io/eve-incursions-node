@@ -1,14 +1,14 @@
 
 services:
   init:
-    image: node:22-alpine
+    image: node:22-alpine@sha256:16e22a550f3863206a3f701448c45f7912c6896a62de43add43bb9c86130c3e2
     working_dir: /eve-incursions
     volumes:
       - ./:/eve-incursions
     command: npm i
 
   server:
-    image: node:22-alpine
+    image: node:22-alpine@sha256:16e22a550f3863206a3f701448c45f7912c6896a62de43add43bb9c86130c3e2
     working_dir: /eve-incursions/packages/server
     command: sh -c "npm start"
     volumes:
@@ -20,7 +20,7 @@ services:
       - 4001:4001
 
   ws:
-    image: node:22-alpine
+    image: node:22-alpine@sha256:16e22a550f3863206a3f701448c45f7912c6896a62de43add43bb9c86130c3e2
     working_dir: /eve-incursions/packages/ws
     command: sh -c "npm start"
     volumes:
@@ -32,7 +32,7 @@ services:
       - 4003:4003
 
   frontend:
-    image: node:22-alpine
+    image: node:22-alpine@sha256:16e22a550f3863206a3f701448c45f7912c6896a62de43add43bb9c86130c3e2
     working_dir: /eve-incursions/packages/frontend
     command: sh -c "npm run dev"
     volumes:
