@@ -1,0 +1,15 @@
+.git
+.gitignore
+.idea
+.vscode
+.env
+.env.*
+node_modules
+build
+tmp
+temp
+seed
+caddy
+*.md
+LICENSE
+docker-compose*.yml

@@ -6,3 +6,5 @@ tmp/
 temp/
 db.sqlite
 .env
+.env.*
+!.env.example
