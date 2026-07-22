@@ -43,6 +43,8 @@ services:
   mysql_backup:
     image: databack/mysql-backup@sha256:668f299c4f0ecbf82f0178776d980f646cf12b74138565990f66038db191180a
     restart: always
+    profiles:
+      - backup
     volumes:
       - mysql-backups:/db
     networks:
