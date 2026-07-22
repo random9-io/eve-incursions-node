@@ -4,7 +4,7 @@ const path = require('path');
 const nextConfig = {
   output: 'standalone',
   outputFileTracingRoot: path.join(__dirname, '../../'),
-  poweredBy: false,
+  poweredByHeader: false,
   async headers() {
     return [
       {

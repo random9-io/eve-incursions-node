@@ -3,7 +3,7 @@ import {getSdk, RatGroupsQuery} from '../lib/graphql';
 import {Rat} from '../components/rats/Rat';
 import styles from '../components/rats/rats.module.css';
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const client = new GraphQLClient('http://server:4001');
   const sdk = getSdk(client);
   const {ratGroups} = await sdk.ratGroups();
