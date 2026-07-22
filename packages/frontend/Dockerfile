@@ -8,9 +8,7 @@ RUN npm ci --workspace=packages/frontend --include-workspace-root
 
 FROM node:22-alpine@sha256:16e22a550f3863206a3f701448c45f7912c6896a62de43add43bb9c86130c3e2 AS builder
 WORKDIR /app
-ENV NODE_ENV=production
 COPY --from=deps /app/node_modules /app/node_modules
-COPY --from=deps /app/packages/frontend/node_modules /app/packages/frontend/node_modules
 COPY packages/frontend/ /app/packages/frontend/
 
 WORKDIR /app/packages/frontend

@@ -30,7 +30,7 @@ services:
     ports:
       - "127.0.0.1:4003:4003"
     environment:
-      - ALLOWED_ORIGINS=https://eve.tar.nz
+      - ALLOWED_ORIGINS
     healthcheck:
       test: ["CMD-SHELL", "true"]
       interval: 30s
